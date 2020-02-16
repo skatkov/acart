@@ -1,7 +1,8 @@
 require 'sinatra'
 require "sinatra/reloader" if development?
+require 'haml'
 
 get '/' do
-  erb :index
+  haml :index
 end
 
