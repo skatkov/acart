@@ -1,5 +1,5 @@
 {
-  "dependencies": {
+  "devDependencies": {
     "tailwindcss": "^1.2.0"
   }
 }
