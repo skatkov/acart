@@ -1,6 +1,12 @@
 {
   "private": true,
+  "scripts": {
+    "start": "webpack --mode development",
+    "build": "webpack --mode production"
+	},
   "devDependencies": {
+    "css-loader": "^3.4.2",
+    "style-loader": "^1.1.3",
     "tailwindcss": "^1.2.0",
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11"
