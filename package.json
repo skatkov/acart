@@ -1,5 +1,7 @@
 {
   "devDependencies": {
-    "tailwindcss": "^1.2.0"
+    "tailwindcss": "^1.2.0",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
   }
 }
