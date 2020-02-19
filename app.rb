@@ -27,6 +27,7 @@ end
 
 post '/' do
   if true
+    session[:url] = amazon_url(params)
     redirect '/done'
   else
     erb :index
@@ -34,11 +35,16 @@ post '/' do
 end
 
 get '/done' do
-  erb :done
+  return "Product bundle was successfully submitted. <br/> #{session[:url]}"
 end
 
 helpers do
   def valid_asin?(asin)
     asin.match?(/\A[0-9,A-Z]{10}\z/)
+  end
+
+
+  def amazon_url(params)
+    "https://amazon.com/cart/"
   end
 end
