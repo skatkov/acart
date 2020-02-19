@@ -28,15 +28,11 @@ end
 
 post '/' do
   if true
-    session[:url] = amazon_url(params)
-    redirect '/done'
+    @amazon_url = amazon_url(params)
+    erb :index
   else
     erb :index
   end
-end
-
-get '/done' do
-  return "Product bundle was successfully submitted. <br/> #{session[:url]}"
 end
 
 helpers do

@@ -21,10 +21,4 @@ class MyTest < MiniTest::Test
 
     assert last_response.redirect?
   end
-
-  def test_done
-    get '/done'
-    assert last_response.ok?
-    assert last_response.body.include?("Product bundle was successfully submitted.")
-  end
 end
