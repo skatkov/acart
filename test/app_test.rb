@@ -13,7 +13,7 @@ class MyTest < MiniTest::Test
   end
 
   def test_shortener
-    post '/', asins: {"0" => { id: 'B07K8CZ5WT', quantity: "1"}}, region: 'US'
+    post '/', items: {"0" => { asin: 'B07K8CZ5WT', quantity: "1"}}, region: 'US'
 
     assert last_response.redirect?
   end
