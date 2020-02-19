@@ -5,6 +5,12 @@ require 'rack/ssl-enforcer'
 
 configure do
   use Rack::SslEnforcer if ENV['FORCE_SSL']
+  set :session_secret, 'asdfa2342923422f1adc05c837fa234230e3594b93824b00e930ab0fb94b'
+  # don't use `enable :sessions`, use:
+  use Rack::Session::Cookie, :key => '_rack_session',
+      :path => '/',
+      :expire_after => 2592000, # In seconds
+      :secret => settings.session_secret
 end
 
 get '/' do
@@ -20,8 +26,7 @@ get '/' do
 end
 
 post '/' do
-  form = BundleForm.new(params)
-  if form.save
+  if true
     redirect '/done'
   else
     erb :index
@@ -35,15 +40,5 @@ end
 helpers do
   def valid_asin?(asin)
     asin.match?(/\A[0-9,A-Z]{10}\z/)
-  end
-end
-
-class BundleForm
-  def initialize(*params)
-
-  end
-
-  def save
-    true
   end
 end
