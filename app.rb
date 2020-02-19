@@ -8,7 +8,11 @@ configure do
 end
 
 get '/' do
-	erb :index
+  if params['asin']
+    erb :index, notice: 'ASIN Added'
+  else
+    erb :index
+  end
 end
 
 post '/' do
