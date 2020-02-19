@@ -12,6 +12,24 @@ get '/' do
 end
 
 post '/' do
-	puts params
+  form = BundleForm.new(params)
+  if form.save
+    redirect '/done'
+  else
+    erb :index
+  end
 end
 
+get '/done' do
+  erb :done
+end
+
+class BundleForm
+  def initialize(*params)
+
+  end
+
+  def save
+    true
+  end
+end
