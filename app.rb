@@ -9,10 +9,10 @@ end
 
 get '/' do
   if params['asin']
-    erb :index, notice: 'ASIN Added'
-  else
-    erb :index
+    @notice = "ASIN #{params[:asin]} was added. Feel free to add more.."
   end
+
+  erb :index
 end
 
 post '/' do
