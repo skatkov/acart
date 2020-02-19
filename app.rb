@@ -3,10 +3,10 @@ require "sinatra/reloader" if development?
 require 'pry' if development?
 
 get '/' do
-  erb :index
+	erb :index
 end
 
 post '/' do
-	#handle form subsmission
+	puts params
 end
 
