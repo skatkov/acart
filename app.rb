@@ -9,7 +9,11 @@ end
 
 get '/' do
   if params['asin']
-    @notice = "ASIN #{params[:asin]} was added. Feel free to add more.."
+    if valid_asin?(params['asin'])
+      @notice = "ASIN(#{params[:asin]}) was added. Feel free to add more.."
+    else
+      @warning = "ASIN(#{params[:asin]}) should be 10 characters long, letters or numbers"
+    end
   end
 
   erb :index
@@ -26,6 +30,12 @@ end
 
 get '/done' do
   erb :done
+end
+
+helpers do
+  def valid_asin?(asin)
+    asin.match?(/\A[0-9,A-Z]{10}\z/)
+  end
 end
 
 class BundleForm
