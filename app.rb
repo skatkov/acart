@@ -2,6 +2,7 @@ require 'sinatra'
 require "sinatra/reloader" if development?
 require 'pry' if development?
 require 'rack/ssl-enforcer'
+require 'carriage'
 
 configure do
   use Rack::SslEnforcer if ENV['FORCE_SSL']
@@ -45,6 +46,10 @@ helpers do
 
 
   def amazon_url(params)
-    "https://amazon.com/cart/"
+    Carriage.build(
+      params['items'].values,
+      locale: params['locale'],
+      tag: params['associate_tag']
+    )
   end
 end
