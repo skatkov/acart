@@ -12,7 +12,7 @@ get '/' do
     if valid_asin?(params['asin'])
       @notice = "ASIN(#{params[:asin]}) was added. Feel free to add more.."
     else
-      @warning = "ASIN(#{params[:asin]}) should be 10 characters long, letters or numbers"
+      @warning = "ASIN should be 10 characters long, letters or numbers"
     end
   end
 
