@@ -5,6 +5,7 @@ gem 'sinatra'
 gem 'sinatra-contrib', '~> 2.0', '>= 2.0.8.1'
 gem 'rack-ssl-enforcer'
 gem 'carriage'
+gem 'erubi'
 
 group :development, :test do
 	gem 'pry'
