@@ -48,7 +48,6 @@ GEM
       rack-protection (= 2.0.8.1)
       sinatra (= 2.0.8.1)
       tilt (~> 2.0)
-    sqlite3 (1.4.2)
     standard (0.1.9)
       rubocop (~> 0.79.0)
       rubocop-performance (~> 1.5.1)
@@ -68,7 +67,6 @@ DEPENDENCIES
   sequel
   sinatra
   sinatra-contrib (~> 2.0, >= 2.0.8.1)
-  sqlite3
   standard
 
 RUBY VERSION
