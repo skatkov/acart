@@ -7,7 +7,7 @@ gem "rack-ssl-enforcer"
 gem "carriage"
 gem "erubi"
 gem "sequel"
-gem "sqlite3"
+gem "pg"
 
 group :development, :test do
   gem "pry"

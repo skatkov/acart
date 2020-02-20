@@ -11,3 +11,4 @@
 .DS_Store
 /dist/
 /public/js/*.js
+.env.rb
