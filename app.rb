@@ -3,15 +3,10 @@ require "sinatra/reloader" if development?
 require "pry" if development?
 require "rack/ssl-enforcer"
 require "carriage"
+require "sequel"
 
 configure do
   use Rack::SslEnforcer if ENV["FORCE_SSL"]
-  set :session_secret, "asdfa2342923422f1adc05c837fa234230e3594b93824b00e930ab0fb94b"
-  # don't use `enable :sessions`, use:
-  use Rack::Session::Cookie, key: "_rack_session",
-                             path: "/",
-                             expire_after: 2592000, # In seconds
-                             secret: settings.session_secret
 end
 
 get "/" do
