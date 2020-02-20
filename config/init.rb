@@ -1,5 +1,13 @@
-require 'sqlite3'
-require 'sequel'
+require "sqlite3"
+require "sequel"
+require "sinatra/reloader" if development?
+require "pry" if development?
+require "rack/ssl-enforcer"
+require "carriage"
+
+configure do
+  use Rack::SslEnforcer if ENV["FORCE_SSL"]
+end
 
 DB = Sequel.sqlite # memory database, requires sqlite3
 
