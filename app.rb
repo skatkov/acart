@@ -3,7 +3,7 @@ require "sinatra/reloader" if development?
 require "pry" if development?
 require "rack/ssl-enforcer"
 require "carriage"
-require "sequel"
+require_relative "config/init"
 
 configure do
   use Rack::SslEnforcer if ENV["FORCE_SSL"]
@@ -21,8 +21,13 @@ get "/" do
   erb :index
 end
 
+get "/:id" do
+  redirect Link.where(id: params['id']).first[:url]
+end
+
 post "/" do
-  @amazon_url = amazon_url(params) if true
+  l = Link.insert(url: amazon_url(params))
+  @amazon_url = "https://www.acart.to/#{l}"
 
   erb :index
 end
