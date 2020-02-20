@@ -24,6 +24,7 @@ GEM
       rack
     rack-ssl-enforcer (0.2.9)
     rainbow (3.0.0)
+    rake (13.0.1)
     rubocop (0.79.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
@@ -64,6 +65,7 @@ DEPENDENCIES
   pg
   pry
   rack-ssl-enforcer
+  rake
   sequel
   sinatra
   sinatra-contrib (~> 2.0, >= 2.0.8.1)

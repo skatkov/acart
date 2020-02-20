@@ -8,6 +8,7 @@ gem "carriage"
 gem "erubi"
 gem "sequel"
 gem "pg"
+gem 'rake'
 
 group :development, :test do
   gem "pry"
