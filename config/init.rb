@@ -1,4 +1,3 @@
-require "sqlite3"
 require "sequel"
 require "sinatra/reloader" if development?
 require "pry" if development?
@@ -14,13 +13,9 @@ configure do
   use Rack::SslEnforcer if ENV["FORCE_SSL"]
 end
 
-# Delete APP_DATABASE_URL from the environment, so it isn't accidently
-# passed to subprocesses.  APP_DATABASE_URL may contain passwords.
-DB = Sequel.connect("postgres:///acart_development?user=acart")
+DB = Sequel.connect(
+  ENV['DATABASE_URL'] || "postgres:///acart_#{ENV.fetch('RACK_ENV', 'development')}?user=acart"
+)
 
-DB.create_table :links do
-  primary_key :id
-  String :url
-end
 
 Link = DB[:links]
