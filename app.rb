@@ -20,7 +20,7 @@ get "/" do
 end
 
 get "/delete" do
-  cookies.delete_if {|c| asin_keys.include? c}
+  clean_asins
   redirect '/'
 end
 
@@ -31,6 +31,7 @@ end
 post "/" do
   l = Link.insert(url: amazon_url(params))
   @amazon_url = "https://www.acart.to/#{bijective_encode(l)}"
+  clean_asins
 
   erb :index
 end
@@ -42,6 +43,10 @@ helpers do
 
   def asin_present?(asin)
     asins.include?(asin)
+  end
+
+  def clean_asins
+    cookies.delete_if {|c| asin_keys.include? c}
   end
 
   def amazon_url(params)
