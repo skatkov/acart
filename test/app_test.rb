@@ -1,4 +1,5 @@
 require_relative "test_helper"
+require_relative "../app"
 
 class MyTest < MiniTest::Test
   include Rack::Test::Methods
@@ -14,7 +15,7 @@ class MyTest < MiniTest::Test
 
   def test_redirect
     id = Link.insert(url: 'https://amazon.com/dp/test')
-    get "/#{id}"
+    get "/#{bijective_encode(id)}"
     assert last_response.redirect?
     assert_equal 'https://amazon.com/dp/test', last_response.location
   end
@@ -30,5 +31,19 @@ class MyTest < MiniTest::Test
     refute last_response.redirect?
     assert last_response.ok?
     assert_equal(cnt+1, Link.count)
+  end
+
+  private
+  def bijective_encode(i)
+    # from http://refactormycode.com/codes/125-base-62-encoding
+    # with only minor modification
+    return ALPHABET[0] if i == 0
+    s = ''
+    base = ALPHABET.length
+    while i > 0
+      s << ALPHABET[i.modulo(base)]
+      i /= base
+    end
+    s.reverse
   end
 end
