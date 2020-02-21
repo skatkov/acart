@@ -6,7 +6,7 @@ get "/" do
     asin = params["asin"].strip
     if valid_asin?(asin)
       if asin_present?(asin)
-        @notice = "ASIN(#{params[:asin]}) is already in a list."
+        @warning = "ASIN(#{params[:asin]}) is already in a list."
       else
         add_asin(asin)
         @notice = "ASIN(#{params[:asin]}) was added. Feel free to add more.."
@@ -30,11 +30,13 @@ get "/:id" do
 end
 
 post "/" do
-  l = Link.insert(url: amazon_url(params))
+  url = amazon_url(params)
+  l = Link.insert(url: url)
+
   @amazon_url = "https://www.acart.to/#{bijective_encode(l)}"
   clean_asins
 
-  erb :index
+  erb :done
 end
 
 helpers do
@@ -81,8 +83,6 @@ helpers do
   # (('a'..'z').to_a + ('A'..'Z').to_a + (0..9).to_a).shuffle.join
 
   def bijective_encode(i)
-    # from http://refactormycode.com/codes/125-base-62-encoding
-    # with only minor modification
     return ALPHABET[0] if i == 0
     s = ''
     base = ALPHABET.length
@@ -94,8 +94,6 @@ helpers do
   end
 
   def bijective_decode(s)
-    # based on base2dec() in Tcl translation
-    # at http://rosettacode.org/wiki/Non-decimal_radices/Convert#Ruby
     i = 0
     base = ALPHABET.length
     s.each_char { |c| i = i * base + ALPHABET.index(c) }
