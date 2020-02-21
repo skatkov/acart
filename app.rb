@@ -3,10 +3,16 @@ require_relative "config/init"
 
 get "/" do
   if params["asin"]
-    if valid_asin?(params["asin"])
-      @notice = "ASIN(#{params[:asin]}) was added. Feel free to add more.."
+    asin = params["asin"].strip
+    if valid_asin?(asin)
+      if asin_present?(asin)
+        @notice = "ASIN(#{params[:asin]}) is already in a list."
+      else
+        add_asin(asin)
+        @notice = "ASIN(#{params[:asin]}) was added. Feel free to add more.."
+      end
     else
-      @warning = "ASIN should be 10 characters long, letters or numbers"
+      @warning = "ASIN should be 10 characters long, letters or numbers."
     end
   end
 
@@ -29,12 +35,24 @@ helpers do
     asin.match?(/\A[0-9,A-Z]{10}\z/)
   end
 
+  def asin_present?(asin)
+    asins.include?(asin)
+  end
+
   def amazon_url(params)
     Carriage.build(
       params["items"].values,
       locale: params["locale"],
       tag: params["associate_tag"]
     )
+  end
+
+  def asins
+    cookies.keys.select {|v| v.start_with?('asin_')}.map{|v| v[5..v.size]}
+  end
+
+  def add_asin(asin)
+    cookies["asin_#{asin}"] = '1'
   end
 
   # Simple bijective function
