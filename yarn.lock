@@ -2554,7 +2554,14 @@ static-extend@^0.1.1:
     define-property "^0.2.5"
     object-copy "^0.1.0"
 
-stimulus@^1.1.1:
+stimulus-form-utilities@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/stimulus-form-utilities/-/stimulus-form-utilities-1.0.6.tgz#781e9424c4eb48eb72b6094ae0aa09b556981b6f"
+  integrity sha512-X3IZ4ZU11SfXkRHSnr+Aw/RcZ0zuEXdCb9mavIaFDCa3v+w/+S2chSa0ZWCha5yerWB88ypU/WpvTgvlc/eoaw==
+  dependencies:
+    stimulus "^1.1.0"
+
+stimulus@^1.1.0, stimulus@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/stimulus/-/stimulus-1.1.1.tgz#53c2fded6849e7b85eed3ed8dd76e33abd74bec5"
   integrity sha512-R0mBqKp48YnRDZOxZ8hiOH4Ilph3Yj78CIFTBkCwyHs4iGCpe7xlEdQ7cjIxb+7qVCSxFKgxO+mAQbsNgt/5XQ==
