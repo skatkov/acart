@@ -1,5 +1,4 @@
 require_relative "test_helper"
-require_relative "../app"
 
 class MyTest < MiniTest::Test
   include Rack::Test::Methods
@@ -31,6 +30,21 @@ class MyTest < MiniTest::Test
     refute last_response.redirect?
     assert last_response.ok?
     assert_equal(cnt+1, Link.count)
+    assert Link.to_a.last[:url].end_with?('?ASIN.1=B07K8CZ5WT&Quantity.1=1&ASIN.2=B07QYXD2TH&Quantity.2=1')
+  end
+
+  def test_shortener_multiple
+    cnt = Link.count
+    post "/", {"items" =>
+                 {"0" => {"asin" => "B07K8CZ5WT", "quantity" => "1"},
+                  "1" => {"asin" => "B07QYXD2TH", "quantity" => "2"},},
+               "associate_tag" => "",
+               "locale" => "US",}
+
+    refute last_response.redirect?
+    assert last_response.ok?
+    assert_equal(cnt+1, Link.count)
+    assert Link.to_a.last[:url].end_with?('?ASIN.1=B07K8CZ5WT&Quantity.1=1&ASIN.2=B07QYXD2TH&Quantity.2=2')
   end
 
   private

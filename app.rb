@@ -25,7 +25,8 @@ get "/delete" do
 end
 
 get "/:id" do
-  redirect Link.where(id: bijective_decode(params['id'])).first[:url]
+  lnk = Link.where(id: bijective_decode(params['id'])).first
+  redirect lnk[:url]
 end
 
 post "/" do
