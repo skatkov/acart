@@ -55,18 +55,18 @@
       </div>
       <div class="w-full">
         <div class='pb-10'>
-          <% asins.each do |asin| %>
+          <% asins.each_with_index do |asin, index| %>
             <% next if asin.empty? %>
             <div class="flex py-2">
               <div class="w-4/5 h-10 py-3 px-1">
-                <input name="items[0][asin]" value=<%= asin %> class="hover:text-blue-500" readonly>
+                <input name="items[<%=index %>][asin]" value=<%= asin %> class="hover:text-blue-500" readonly>
 
-                <a href="https://www.amazon.com/dp/B07K8CZ5WT" target="_blank" class="text-xs text-gray-600 flex items-center">
+                <a href="https://www.amazon.com/dp/<%=asin%>" target="_blank" class="text-xs text-gray-600 flex items-center">
                   www.amazon.com/dp/<%= asin %>
                 </a>
               </div>
               <div class="w-1/5 h-10 text-right p-3 cursor-pointer">
-                <input value="1" min="1" max="10" name="items[0][quantity]" type="number" class="w-full text-center bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                <input value="1" min="1" max="10" name="items[<%=index %>][quantity]" type="number" class="w-full text-center bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
               </div>
             </div>
           <% end %>
