@@ -1,8 +1,11 @@
 ## Features
-- Amazon product shortener has an unique ability to bundle multiple amazon products into one short link.
-- After user follows this link, he will be redirected to checkout page with all products added to cart and your associate tag injected.
-- Once at a checkout, user can remove some item completely ot change quantity
-- Shortener picks most shortest urls available, e.g. https://www.acart.to/p
+aCart is not a regular amazon shortener. It can produce **very short links**, **include your associate tag** with them. But what separates aCart from rest is:
+- Creating a bundle of products with a single link
+- Link will redirect to a checkout page with all products in a cart
+- Once at a checkout, user can remove item completely ot change quantity
+
+Example:
+- https://www.acart.to/X 
 
 
 ## Database Setup
