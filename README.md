@@ -1,3 +1,6 @@
+== Features
+
+
 == Database Setup
 
 We're using PostgreSQL database. You can create required database account with this:
