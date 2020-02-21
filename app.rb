@@ -19,6 +19,11 @@ get "/" do
   erb :index
 end
 
+get "/delete" do
+  cookies.delete_if {|c| asin_keys.include? c}
+  redirect '/'
+end
+
 get "/:id" do
   redirect Link.where(id: bijective_decode(params['id'])).first[:url]
 end
@@ -47,8 +52,12 @@ helpers do
     )
   end
 
+  def asin_keys
+    cookies.keys.select {|v| v.start_with?('asin_')}
+  end
+
   def asins
-    cookies.keys.select {|v| v.start_with?('asin_')}.map{|v| v[5..v.size]}
+    asin_keys.map{|v| v[5..v.size]}
   end
 
   def add_asin(asin)
