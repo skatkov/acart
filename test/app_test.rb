@@ -19,6 +19,21 @@ class MyTest < MiniTest::Test
     assert_equal 'https://amazon.com/dp/test', last_response.location
   end
 
+  def test_add_asin
+    asin = 'B07K8CZ5WT'
+    get "/?asin=#{asin}"
+
+    assert last_response.body.include?("ASIN(#{asin}) was added. Feel free to add more..")
+  end
+  def test_add_wrong_asin
+    wrong_asin = 'B07K8CZ5'
+    get "/?asin=#{wrong_asin}"
+
+    refute last_response.body.include?("ASIN(#{wrong_asin}) was added. Feel free to add more..")
+    assert last_response.body.include?("ASIN should be 10 characters long, letters or numbers.")
+  end
+
+
   def test_shortener
     cnt = Link.count
     post "/", {"items" =>
