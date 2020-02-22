@@ -6,13 +6,20 @@ get "/" do
     asin = params["asin"].strip
     if valid_asin?(asin)
       if asin_present?(asin)
-        @warning = "ASIN(#{params[:asin]}) is already in a list."
+        @warning = "ASIN(#{asin}) is already in a list."
       else
         add_asin(asin)
-        @notice = "ASIN(#{params[:asin]}) was added. Feel free to add more.."
+        @notice = "ASIN(#{asin}) was added. Feel free to add more.."
+      end
+    elsif (a= find_asin(asin))
+      if asin_present?(a)
+        @warning = "ASIN(#{a}) is already in a list."
+      else
+        add_asin(a)
+        @notice = "ASIN(#{a}) was added. Feel free to add more.."
       end
     else
-      @warning = "ASIN should be 10 characters long, letters or numbers."
+      @warning = "We didn't detect any ASIN or Amazon Product URL."
     end
   else
     return erb :landing if asins.empty?
@@ -43,6 +50,14 @@ end
 helpers do
   def valid_asin?(asin)
     asin.match?(/\A[0-9,A-Z]{10}\z/)
+  end
+
+  def find_asin(url)
+    if (m = url.match(/\/(?:dp|gp|asin)\/(?:product\/)?(\w{10})/))
+     return m[1]
+    else
+      nil
+    end
   end
 
   def shorten_link_id(link_id)

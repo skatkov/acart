@@ -25,12 +25,23 @@ class MyTest < MiniTest::Test
 
     assert last_response.body.include?("ASIN(#{asin}) was added. Feel free to add more..")
   end
+
+  def test_add_url
+    require 'uri'
+    get "/?asin=#{URI.escape("https://www.amazon.com/Darice-Solution-Top-Works-Machines-Birthdays/dp/B07RYBB4NZ")}"
+
+    assert last_response.body.include?("ASIN(B07RYBB4NZ) was added. Feel free to add more..")
+
+    get "/?asin=#{URI.escape("https://www.amazon.com/Darice-Solution-Top-Works-Machines-Birthdays/dp/B07RYBB4NZ")}"
+    refute last_response.body.include?("ASIN(B07RYBB4NZ) was added. Feel free to add more..")
+    assert last_response.body.include?("ASIN(B07RYBB4NZ) is already in a list.")
+  end
   def test_add_wrong_asin
     wrong_asin = 'B07K8CZ5'
     get "/?asin=#{wrong_asin}"
 
     refute last_response.body.include?("ASIN(#{wrong_asin}) was added. Feel free to add more..")
-    assert last_response.body.include?("ASIN should be 10 characters long, letters or numbers.")
+    assert last_response.body.include?("We didn't detect any ASIN or Amazon Product URL.")
   end
 
 
