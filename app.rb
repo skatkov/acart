@@ -34,7 +34,7 @@ end
 post "/" do
   l = Link.insert(url: amazon_url(params))
 
-  @short_url = "https://www.acart.to/#{bijective_encode(l)}"
+  @short_url = shorten_link_id(l)
   clean_asins
 
   erb :done
@@ -43,6 +43,10 @@ end
 helpers do
   def valid_asin?(asin)
     asin.match?(/\A[0-9,A-Z]{10}\z/)
+  end
+
+  def shorten_link_id(link_id)
+    "https://acart.to/#{bijective_encode(link_id)}"
   end
 
   def asin_present?(asin)
