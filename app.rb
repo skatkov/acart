@@ -14,6 +14,8 @@ get "/" do
     else
       @warning = "ASIN should be 10 characters long, letters or numbers."
     end
+  else
+    return erb :docs if asins.empty?
   end
 
   erb :index
