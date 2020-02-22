@@ -2,6 +2,8 @@ require "sinatra"
 require_relative "config/init"
 
 get "/" do
+  @tag = params["tag"].strip if params["tag"]
+
   if params["asin"]
     asin = params["asin"].strip
     if valid_asin?(asin)
@@ -28,7 +30,7 @@ get "/" do
   erb :index
 end
 
-get "/delete" do
+get "/clear-list" do
   clean_asins
   redirect '/'
 end
