@@ -15,7 +15,7 @@ get "/" do
       @warning = "ASIN should be 10 characters long, letters or numbers."
     end
   else
-    return erb :docs if asins.empty?
+    return erb :landing if asins.empty?
   end
 
   erb :index
