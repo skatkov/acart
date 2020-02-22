@@ -32,10 +32,9 @@ get "/:id" do
 end
 
 post "/" do
-  url = amazon_url(params)
-  l = Link.insert(url: url)
+  l = Link.insert(url: amazon_url(params))
 
-  @amazon_url = "https://www.acart.to/#{bijective_encode(l)}"
+  @short_url = "https://www.acart.to/#{bijective_encode(l)}"
   clean_asins
 
   erb :done
