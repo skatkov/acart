@@ -1,5 +1,5 @@
 ## Features
-aCart.to is not a regular amazon shortener. It can produces **very short links**, **include your associate tag**. But what separates aCart.to from the rest are other features:
+aCart.to is not a regular amazon shortener. It can produce **very short links** and **include associate tag**. But what separates aCart.to apart from the rest are other features:
 - Bundles multiple products with a single link
 - Link will redirect to a checkout page adding products to a cart
 - Once at checkout, user can remove item completely ot change quantity
