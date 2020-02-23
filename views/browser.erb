@@ -1,0 +1,54 @@
+<div class="flex justify-center">
+  <div class="w-full max-w-lg">
+    <div class="flex flex-wrap px-8 pt-6 pb-8 mb-4 bg-white shadow-md rounded leading-normal">
+      <h3 class="py-3 text-xl text-gray-600">Integration with Browsers</h3>
+      <p class="py-3">aCart.to uses bookmarklets for browser integration. Bookmarklets are little javascript links that live in the bookmarks
+        toolbar of your browser.</p>
+
+      <p class="py-3">Here's the list of bookmarklets:</p>
+      <ul class="list-disc pl-6 pb-6 pt-3">
+        <li class="py-1">
+          <a class="bookmarklet border-2 rounded border-blue-500 p-1 border-dashed" href="javascript:q=location.href;if(document.getSelection){d=document.getSelection();}else{d='';};p=document.title;void(open('https://acart.to/?asin='+encodeURIComponent(location.href),'aCart.to','toolbar=no,scrollbars=yes,width=750,height=700'));">popup</a>
+          opens aCart.to form window with product you're currently viewing already added.
+        </li>
+
+        <li class="py-1">
+          <a class="bookmarklet border-2 rounded border-blue-500 p-1 border-dashed" href="javascript:q=location.href;if(document.getSelection){d=document.getSelection();}else{d='';};p=document.title;void(open('https://acart.to/?asin='+encodeURIComponent(location.href) + '&tag=YOUR-TAG','aCart.to','toolbar=no,scrollbars=yes,width=750,height=700'));">popup
+            with tag</a> opens aCart.to form window with product you're currently viewing already added and <strong>associate tag</strong> filled. Don't forget to edit bookmark location to replace 'YOUR-TAG' with appropriate value!
+        </li>
+
+        <li class="py-1">
+          <a
+            class="bookmarklet border-2 rounded border-blue-500 p-1 border-dashed"
+            href="javascript:if(document.getSelection){s=document.getSelection();}else{s='';};document.location='https://acart.to/?asin='+encodeURIComponent(location.href);"
+          >samepage</a> will load the aCart form in the same window as the page, with no popup.
+        </li>
+
+        <li class="py-1">
+          <a
+            class="bookmarklet border-2 rounded border-blue-500 p-1 border-dashed"
+            href="javascript:if(document.getSelection){s=document.getSelection();}else{s='';};document.location='https://acart.to/?asin='+encodeURIComponent(location.href) + '&tag=YOUR-TAG';"
+          >samepage with tag</a> will load the aCart form in the same window as the page but also will pre-populate <strong>associate tag</strong>, with no popup. Don't forget to edit bookmark location to replace 'YOUR-TAG' with appropriate value!
+        </li>
+      </ul>
+
+
+
+      <p class="py-3">If you use Firefox, Safari, Chrome or Opera, you can drag these links up to your bookmarks toolbar. You can
+        rename them to whatever you like by right-clicking and choosing 'edit name'.
+
+      <p class="py-3">If you're using Internet Explorer, dragging won't work. Right-click on the bookmarklet instead, and select 'add
+        to Favorites' at the prompt.</p>
+
+      <div class="w-full">
+        <div class="sm:flex bg-grey-light sm:items-center pt-4 text-center">
+          <a href="/" class="w-full px-4 rounded text-blue-400 font-bold p-3 uppercase border-2 border-blue-500 bg-white hover:bg-gray-200">
+            Back
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

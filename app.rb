@@ -30,6 +30,10 @@ get "/" do
   erb :index
 end
 
+get "/integrate-browser" do
+  erb :browser
+end
+
 get "/clear-list" do
   clean_asins
   redirect '/'
