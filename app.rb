@@ -13,7 +13,8 @@ get "/" do
         add_asin(asin)
         @notice = "ASIN(#{asin}) was added. Feel free to add more.."
       end
-    elsif (a= find_asin(asin))
+    elsif(params["asin"].size > 10 && (a= find_asin(asin)))
+
       if asin_present?(a)
         @warning = "ASIN(#{a}) is already in a list."
       else
