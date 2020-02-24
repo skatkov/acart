@@ -5,24 +5,41 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/stimulus/dist/stimulus.umd.js"></script>
+  <script>
+    (() => {
+      const application = Stimulus.Application.start()
+
+      application.register("clipboard", class extends Stimulus.Controller {
+        static get targets() {
+          return ["source"]
+        }
+
+        copy(){
+          this.sourceTarget.select()
+          document.execCommand("copy")
+        }
+      })
+    })()
+  </script>
 </head>
 <body class="py-1 px-6 bg-gray-200 font-mono">
-  <script src="/js/trimmings.js"></script>
+<script src="/js/trimmings.js"></script>
 
-  <div class="flex justify-center">
-    <div class="w-full max-w-lg">
-      <h1 class="text-5xl leading-tight font-bold">
-        <a href="/">aCart.to</a>
-      </h1>
-      <h2 class="mb-4 text-2xl text-gray-600">Amazon product shortener</h2>
-    </div>
+<div class="flex justify-center">
+  <div class="w-full max-w-lg">
+    <h1 class="text-5xl leading-tight font-bold">
+      <a href="/">aCart.to</a>
+    </h1>
+    <h2 class="mb-4 text-2xl text-gray-600">Amazon product shortener</h2>
   </div>
+</div>
 
-  <%= yield %>
+<%= yield %>
 
 
-  <p class="text-center text-gray-500 text-xs">
-    ©2020 Skylup, contact: acart@skylup.com
-  </p>
+<p class="text-center text-gray-500 text-xs">
+  ©2020 Skylup, contact: acart@skylup.com
+</p>
 </body>
 </html>
