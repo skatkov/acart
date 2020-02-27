@@ -8,26 +8,26 @@
       <p class="py-3">Here's the list of bookmarklets:</p>
       <ul class="list-disc pl-6 pb-6 pt-3">
         <li class="py-1">
-          <a class="bookmarklet bg-blue-200 border-2 rounded border-blue-500 p-1 border-dashed" href="javascript:q=location.href;if(document.getSelection){d=document.getSelection();}else{d='';};p=document.title;void(open('https://acart.to/?asin='+encodeURIComponent(location.href),'aCart.to','toolbar=no,scrollbars=yes,width=750,height=700'));">popup</a>
+          <a class="bookmarklet bg-blue-200 border-2 rounded border-blue-500 p-1 border-dashed" href="javascript:q=location.href;if(document.getSelection){d=document.getSelection();}else{d='';};p=document.title;void(open('https://acart.to/?asin='+encodeURIComponent(location.href) +'&title='+encodeURIComponent(document.title),'aCart.to','toolbar=no,scrollbars=yes,width=650,height=700'));">popup</a>
           opens aCart.to form window with product you're currently viewing already added.
         </li>
 
         <li class="py-1">
-          <a class="bookmarklet bg-blue-200 border-2 rounded border-blue-500 p-1 border-dashed" href="javascript:q=location.href;if(document.getSelection){d=document.getSelection();}else{d='';};p=document.title;void(open('https://acart.to/?asin='+encodeURIComponent(location.href) + '&tag=YOUR-TAG','aCart.to','toolbar=no,scrollbars=yes,width=750,height=700'));">popup
+          <a class="bookmarklet bg-blue-200 border-2 rounded border-blue-500 p-1 border-dashed" href="javascript:q=location.href;if(document.getSelection){d=document.getSelection();}else{d='';};p=document.title;void(open('https://acart.to/?asin='+encodeURIComponent(location.href) +'&title='+encodeURIComponent(document.title) + '&tag=YOUR-TAG','aCart.to','toolbar=no,scrollbars=yes,width=650,height=700'));">popup
             with tag</a> opens aCart.to form window with product you're currently viewing already added and <strong>associate tag</strong> filled. Don't forget to edit bookmark location to replace 'YOUR-TAG' with appropriate value!
         </li>
 
         <li class="py-1">
           <a
             class="bookmarklet bg-blue-200 border-2 rounded border-blue-500 p-1 border-dashed"
-            href="javascript:if(document.getSelection){s=document.getSelection();}else{s='';};document.location='https://acart.to/?asin='+encodeURIComponent(location.href);"
+            href="javascript:if(document.getSelection){s=document.getSelection();}else{s='';};document.location='https://acart.to/?asin='+encodeURIComponent(location.href) +'&title='+encodeURIComponent(document.title);"
           >samepage</a> will load the aCart form in the same window as the page, with no popup.
         </li>
 
         <li class="py-1">
           <a
             class="bookmarklet bg-blue-200 border-2 rounded border-blue-500 p-1 border-dashed"
-            href="javascript:if(document.getSelection){s=document.getSelection();}else{s='';};document.location='https://acart.to/?asin='+encodeURIComponent(location.href) + '&tag=YOUR-TAG';"
+            href="javascript:if(document.getSelection){s=document.getSelection();}else{s='';};document.location='https://acart.to/?asin='+encodeURIComponent(location.href) +'&title='+encodeURIComponent(document.title) + '&tag=YOUR-TAG';"
           >samepage with tag</a> will load the aCart form in the same window as the page but also will pre-populate <strong>associate tag</strong>, with no popup. Don't forget to edit bookmark location to replace 'YOUR-TAG' with appropriate value!
         </li>
       </ul>
