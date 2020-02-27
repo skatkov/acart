@@ -10,7 +10,7 @@
   <meta name='identifier-URL' content='https://acart.to'>
   <meta name='coverage' content='Worldwide'>
   <meta name='distribution' content='Global'>
-  
+
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="aCart.to - One of a kind Amazon product shortener">
   <meta name="twitter:description" content="aCart is a Amazon product shortener with ability to add multiple products to a single shortest possible link.">
@@ -44,23 +44,41 @@
     })()
   </script>
 </head>
-<body class="py-1 px-6 bg-gray-200">
+<body class="bg-gray-200">
 <script src="/js/trimmings.js"></script>
 
-<div class="flex justify-center">
-  <div class="w-full max-w-lg">
-    <h1 class="text-5xl leading-tight font-bold">
-      <a href="/">aCart.to</a>
-    </h1>
-    <h2 class="mb-4 text-2xl text-gray-600">Amazon product shortener</h2>
+
+<div class="py-1 px-6">
+  <div class="flex justify-center">
+    <div class="w-full max-w-lg">
+      <h1 class="text-5xl leading-tight font-bold">
+        <a href="/">aCart.to</a>
+      </h1>
+      <h2 class="mb-4 text-2xl text-gray-600">Amazon product shortener</h2>
+    </div>
   </div>
+
+  <%= yield %>
+
+  <div class="flex justify-center">
+    <div class="w-full max-w-lg">
+      <div class="bg-blue-600 text-center py-4 lg:px-4 shadow-md rounded">
+        <a href="https://www.fbamonthly.com">
+          <div class="p-2 bg-blue-500 items-center text-blue-100 leading-none rounded-full flex inline-flex">
+            <span class="font-semibold mr-2 flex-auto px-2 py-1">Project by FbaMonthly newsletter</span>
+            <svg class="fill-current opacity-75 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z"/>
+            </svg>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <p class="text-center text-gray-500 text-xs my-4">
+    ©2020 Skylup, contact: acart@skylup.com
+  </p>
+
+
 </div>
-
-<%= yield %>
-
-
-<p class="text-center text-gray-500 text-xs">
-  ©2020 Skylup, contact: acart@skylup.com
-</p>
 </body>
 </html>
