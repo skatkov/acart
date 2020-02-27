@@ -79,11 +79,13 @@ helpers do
     cookies.delete_if {|c| asin_keys.include? c}
   end
 
+  OUR_TAG = "harempacom-20".freeze
+
   def amazon_url(params)
     Carriage.build(
       params["items"].values,
       locale: params["locale"],
-      tag: params["associate_tag"]
+      tag: params["associate_tag"] || OUR_TAG
     )
   end
 
