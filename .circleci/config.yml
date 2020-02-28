@@ -18,7 +18,7 @@ jobs:
   build:
     working_directory: ~/repo
     docker:
-      - image: circleci/ruby:2.7-stretch-node-browsers
+      - image: circleci/ruby:2.7-node-browsers-legacy
         environment:
           DATABASE_URL: "postgres://acart@localhost:5432/acart"
 
