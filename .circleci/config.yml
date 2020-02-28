@@ -57,7 +57,7 @@ jobs:
       - run:
           name: Unit tests
           command: |
-            bundle exec rake test
+            rake test
 
       # collect reports
       - store_artifacts:
