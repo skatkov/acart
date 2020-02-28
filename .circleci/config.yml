@@ -54,8 +54,8 @@ jobs:
           name: Unit tests
           command: |
             bundle exec rake test
-        environment:
-          DATABASE_URL: "postgres://acart@localhost:5432/acart"
+          environment:
+            DATABASE_URL: "postgres://acart@localhost:5432/acart"
 
       # collect reports
       - store_artifacts:
