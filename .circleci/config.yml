@@ -31,24 +31,12 @@ jobs:
     steps:
       - checkout
 
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "Gemfile.lock" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-
       - run:
           name: install app dependencies
           command: |
             gem install bundler
-            bundle check --path vendor/bundle || bundle install --jobs=4 --retry=3 --path vendor/bundle
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
 
-      # Store ruby gems
-      - save_cache:
-          paths:
-            - ./vendor/bundle
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
       # Database setup
       - run: bundle exec rake setup
@@ -57,7 +45,7 @@ jobs:
       - run:
           name: Unit tests
           command: |
-            rake test
+            bundle exec rake test
 
       # collect reports
       - store_artifacts:
