@@ -79,7 +79,7 @@ helpers do
     cookies.delete_if {|c| asin_keys.include? c}
   end
 
-  OUR_TAG = "harempacom-20".freeze
+  OUR_TAG = "skatkov-20".freeze
 
   def amazon_url(params)
     Carriage.build(
