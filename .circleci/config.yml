@@ -1,0 +1,62 @@
+# Ruby CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-ruby/ for more details
+#
+version: 2
+
+workflows:
+  version: 2
+  build-deploy:
+   jobs:
+     - build:
+        filters:
+          branches:
+            ignore:
+              - master
+
+jobs:
+  build:
+    working_directory: ~/repo
+    docker:
+       - image: circleci/ruby:2.6.4-stretch-node-browsers
+       - image: circleci/postgres:9.6.5-alpine
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "Gemfile.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run:
+          name: install system dependencies
+          command: |
+            sudo apt-get update
+
+      - run:
+          name: install app dependencies
+          command: |
+            bundle check --path vendor/bundle || bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      # Store ruby gems
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+
+      # Database setup
+      - run: bundle exec rake setup
+      - run: bundle exec rake test_up
+
+      - run:
+          name: Unit tests
+          command: |
+            bundle exec rake test
+
+      # collect reports
+      - store_artifacts:
+          path: tmp/screenshots
+          destination: screenshots
