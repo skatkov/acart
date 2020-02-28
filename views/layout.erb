@@ -53,6 +53,22 @@
           document.execCommand("copy")
         }
       })
+
+      application.register("bookmarklet", class extends  Stimulus.Controller {
+        static get targets(){
+          return ["popup", "samepage", "input"]
+        }
+
+        connect(){
+          console.log('bookmarklet connected')
+        }
+
+        populate_id(event) {
+          console.log(this.inputTarget.value)
+
+          this.popupTarget.href = "javascript:q=location.href;if(document.getSelection){d=document.getSelection();}else{d='';};p=document.title;void(open('https://acart.to/?asin='+encodeURIComponent(location.href) +'&title='+encodeURIComponent(document.title) + '&tag="+ this.inputTarget.value +"','aCart.to','toolbar=no,scrollbars=yes,width=650,height=700'));"
+        }
+      })
     })()
   </script>
 </head>
