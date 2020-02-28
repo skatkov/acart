@@ -32,13 +32,9 @@ jobs:
           - v1-dependencies-
 
       - run:
-          name: install system dependencies
-          command: |
-            sudo apt-get update
-
-      - run:
           name: install app dependencies
           command: |
+            gem install bundler
             bundle check --path vendor/bundle || bundle install --jobs=4 --retry=3 --path vendor/bundle
 
       # Store ruby gems
