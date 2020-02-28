@@ -7,22 +7,26 @@ version: 2
 workflows:
   version: 2
   build-deploy:
-   jobs:
-     - build:
-        filters:
-          branches:
-            ignore:
-              - master
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore:
+                - master
 
 jobs:
   build:
     working_directory: ~/repo
     docker:
-       - image: circleci/ruby:2.7
-       - image: circleci/postgres:9.6.5-alpine
-         environment:
-           POSTGRES_USER: acart
-           POSTGRES_DB: acart
+      - image: circleci/ruby:2.7
+        environment:
+          DATABASE_URL: "postgres://acart@localhost:5432/acart"
+
+      - image: circleci/postgres:9.6.5-alpine
+        environment:
+          POSTGRES_USER: acart
+          POSTGRES_DB: acart
+
 
     steps:
       - checkout
@@ -30,9 +34,9 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "Gemfile.lock" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
 
       - run:
           name: install app dependencies
@@ -54,8 +58,6 @@ jobs:
           name: Unit tests
           command: |
             bundle exec rake test
-          environment:
-            DATABASE_URL: "postgres://acart@localhost:5432/acart"
 
       # collect reports
       - store_artifacts:
