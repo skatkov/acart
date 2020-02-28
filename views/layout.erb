@@ -54,19 +54,29 @@
         }
       })
 
-      application.register("bookmarklet", class extends  Stimulus.Controller {
-        static get targets(){
-          return ["popup", "samepage", "input"]
+      application.register("bookmarklet", class extends Stimulus.Controller {
+        static get targets() {
+          return ["popup", "samepage", "input", "list"]
         }
 
-        connect(){
-          console.log('bookmarklet connected')
+        connect() {
+          this.listTarget.style.display = 'none'
+          this.inputTarget.placeholder = 'YOUR-ASSOCIATE-ID'
         }
 
         populate_id(event) {
-          console.log(this.inputTarget.value)
+          this.popupTarget.href = this.popup(this.inputTarget.value);
+          this.samepageTarget.href = this.samepage(this.inputTarget.value);
 
-          this.popupTarget.href = "javascript:q=location.href;if(document.getSelection){d=document.getSelection();}else{d='';};p=document.title;void(open('https://acart.to/?asin='+encodeURIComponent(location.href) +'&title='+encodeURIComponent(document.title) + '&tag="+ this.inputTarget.value +"','aCart.to','toolbar=no,scrollbars=yes,width=650,height=700'));"
+          this.listTarget.style.display = ''
+        }
+
+        popup(tag_id){
+          return "javascript:q=location.href;if(document.getSelection){d=document.getSelection();}else{d='';};p=document.title;void(open('https://acart.to/?asin='+encodeURIComponent(location.href) +'&title='+encodeURIComponent(document.title) + '&tag=" + tag_id + "','aCart.to','toolbar=no,scrollbars=yes,width=650,height=700'));"
+        }
+
+        samepage(tag_id){
+          return "javascript:if(document.getSelection){s=document.getSelection();}else{s='';};document.location='https://acart.to/?asin='+encodeURIComponent(location.href) +'&title='+encodeURIComponent(document.title) + '&tag=" + tag_id +"';"
         }
       })
     })()
