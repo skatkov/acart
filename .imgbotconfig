@@ -1,3 +1,4 @@
 "ignoredFiles": [
     "vendor/*"
-]
+],
+"aggressiveCompression": "true" 
