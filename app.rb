@@ -41,6 +41,7 @@ get "/clear-list" do
 end
 
 get "/:id" do
+  headers["HTTP_REFERER"] = request.referrer
   lnk = Link.where(id: bijective_decode(params['id'])).first
   redirect lnk[:url]
 end
