@@ -1,4 +1,5 @@
 require 'sinatra/contrib'
+require 'honeybadger'
 require "sinatra/reloader" if development?
 require "pry" if development?
 require "rack/ssl-enforcer"

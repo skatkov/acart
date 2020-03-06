@@ -9,6 +9,7 @@ gem "erubi"
 gem "sequel"
 gem "pg"
 gem 'rake'
+gem "honeybadger"
 
 group :development, :test do
   gem "pry"
