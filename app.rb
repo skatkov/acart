@@ -22,7 +22,7 @@ get "/" do
         @notice = "ASIN(#{a}) was added. Feel free to add more.."
       end
     else
-      @warning = "We didn't detect any ASIN or Amazon Product URL."
+      @warning = "This is not an ASIN or Amazon Product URL"
     end
   else
     return erb :landing if asins.empty?
