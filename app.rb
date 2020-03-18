@@ -44,7 +44,7 @@ get "/:id" do
   # Sometimes referrer is missing and that could lead to issues.
   headers["HTTP_REFERER"] = request.referrer if request.referrer
 
-  lnk = Link.find(bijective_decode(params['id'])).first
+  lnk = Link.where(id: bijective_decode(params['id'])).first
   redirect lnk[:url]
 end
 
