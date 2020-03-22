@@ -45,7 +45,7 @@ get "/:id" do
   headers["HTTP_REFERER"] = request.referrer if request.referrer
 
   lnk = Link.where(id: bijective_decode(params['id'])).first
-  redirect lnk[:url]
+  redirect lnk[:url], 302
 end
 
 post "/" do
