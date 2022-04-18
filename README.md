@@ -10,7 +10,12 @@ aCart.to is not a regular amazon shortener. It can produce **very short links** 
 - Once at checkout, user can remove all or some items before making a purchase
 
 ## Setup
+Make sure to have a ruby version manager of your choosing ready to install tehse commands
 
+```
+gem install bundler
+bundle instal
+```
 
 ## Database Setup
 
