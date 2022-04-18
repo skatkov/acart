@@ -6,16 +6,8 @@ Please use at your own risk, Amazon is pretty sketchy about this thing being leg
 ## Features
 aCart.to is not a regular amazon shortener. It can produce **very short links** and **include associate tag**. But what separates aCart.to apart from the rest are other features:
 - Bundles multiple products with a single link
-- Link will redirect to a checkout page adding products to a cart
-- Once at checkout, user can remove item completely ot change quantity
-
-Example:
-- https://www.acart.to/X 
-
-Premium features could include:
-- Verify that all urls have tags associated with them
-- Verify that products linked are still available
-- Analytics
+- After pressing a link, user will be redirected to checkout page with products prefilled
+- Once at checkout, user can remove all or some items before making a purchase
 
 
 ## Database Setup
