@@ -9,6 +9,8 @@ aCart.to is not a regular amazon shortener. It can produce **very short links** 
 - After pressing a link, user will be redirected to checkout page with products prefilled
 - Once at checkout, user can remove all or some items before making a purchase
 
+## Setup
+
 
 ## Database Setup
 
@@ -20,7 +22,3 @@ We're using PostgreSQL database. You can create required database account with t
   createdb -U postgres -O acart acart_test
   createdb -U postgres -O acart acart_development
 ```
-
-## Alogirthm
-
-https://stackoverflow.com/questions/742013/how-do-i-create-a-url-shortener
