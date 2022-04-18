@@ -1,3 +1,8 @@
+## WARNING
+This project is abandoned!!! But you are free to browse around -- I still think it was a useful excersise in building url shorteners.
+
+Please use at your own risk, Amazon is pretty sketchy about this thing being legal or not. (and everyone is scared of Amazon closing their accounts for any minor issue... so you probably should not use it)
+
 ## Features
 aCart.to is not a regular amazon shortener. It can produce **very short links** and **include associate tag**. But what separates aCart.to apart from the rest are other features:
 - Bundles multiple products with a single link
